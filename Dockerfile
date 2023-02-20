@@ -6,6 +6,24 @@ ARG JAR_FILE=target/*.jar
 
 COPY ${JAR_FILE} coffe-shop-docker.jar
  ENTRYPOINT ["java", "-jar", "coffe-shop-docker.jar"]
+
+# FROM openjdk:8
+# EXPOSE 8080
+# ADD target/coffe-shop-docker.jar coffe-shop-docker.jar
+# RUN mkdir -p /opt/conf
+# COPY application.properties /opt/conf/application.properties
+# ENTRYPOINT ["java","-jar","coffe-shop-docker.jar",  "--spring.config.location=file:/opt/conf/application.properties"]
+
+
+
+# FROM openjdk:8
+#
+# EXPOSE 8080
+#
+# ARG JAR_FILE=target/*.jar
+#
+# COPY ${JAR_FILE} coffe-shop-docker.jar
+#  ENTRYPOINT ["java", "-jar", "coffe-shop-docker.jar"]
 #
 # # Install MySQL client
 # RUN apt-get update && apt-get install -y mysql-client

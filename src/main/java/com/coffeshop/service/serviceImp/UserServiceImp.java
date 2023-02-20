@@ -10,6 +10,7 @@ import com.coffeshop.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.Optional;
 
@@ -28,15 +29,12 @@ public class UserServiceImp implements UserService {
     @Override
     public UserDto registerUser(UserDto userDto) {
         log.info("saveUser method calling..");
-
-        Boolean userExistsWithEmail = userRepository.existsByEmail(userDto.getEmail());
         User user = null;
-
-        if (userExistsWithEmail)
+        if (userRepository.existsById(userDto.getId())){
             throw new KnownException(KnownExceptionMsgEnum.DUPLICATE_EMAIL);
-
-         user = userMapper.UserDtoToEntity(userDto);
-         userRepository.save(user);
+        }
+        user = userMapper.UserDtoToEntity(userDto);
+        userRepository.save(user);
 
          return userDto;
     }

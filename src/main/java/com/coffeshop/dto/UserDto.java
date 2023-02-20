@@ -15,6 +15,8 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
+
+    private Long id;
     @NonNull
     private String userName;
     @NonNull

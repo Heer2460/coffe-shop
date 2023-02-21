@@ -6,43 +6,43 @@ services:
     ports:
       - "8080:8080"
     environment:
-      MYSQL_DATASOURCE_URL: jdbc:mysql://db:3306/coffe_shop?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=fals
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_DATASOURCE_URL: jdbc:mysql://test-java.cew5j1fl7xwk.ap-southeast-2.rds.amazonaws.com:3306/test_java?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=fals
+      MYSQL_HOST: test-java.cew5j1fl7xwk.ap-southeast-2.rds.amazonaws.com
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Admin123
       MYSQL_PORT: 3306
 
 #      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/coffe_shop?useSSL=false
 #      SPRING_DATASOURCE_USERNAME: root
 #      SPRING_DATASOURCE_PASSWORD: root
 
-    networks:
-      - db_network
-    depends_on:
-      - db
+#    networks:
+#      - db_network
+#    depends_on:
+#      - db
 
-  db:
-    image: mysql:5.7.41
-    command: --default-authentication-plugin=mysql_native_password
-
-    environment:
-      MYSQL_DATABASE: coffe_shop
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
-
+#  db:
+#    image: mysql:5.7.41
+#    command: --default-authentication-plugin=mysql_native_password
+#
+#    environment:
+#      MYSQL_DATABASE: coffe_shop
 #      MYSQL_ROOT_PASSWORD: root
-#      MYSQL_DATABASE: root
-    networks:
-      - db_network
-    ports:
-      - "3306:3306"
-#    volumes:
-#      - mysql_data:/var/lib/mysql
-
-networks:
-  db_network:
-    driver: bridge
-    name: mysql_db_network
+#      MYSQL_PASSWORD: root
+#
+##      MYSQL_ROOT_PASSWORD: root
+##      MYSQL_DATABASE: root
+#    networks:
+#      - db_network
+#    ports:
+#      - "3306:3306"
+##    volumes:
+##      - mysql_data:/var/lib/mysql
+#
+#networks:
+#  db_network:
+#    driver: bridge
+#    name: mysql_db_network
 
 
 
